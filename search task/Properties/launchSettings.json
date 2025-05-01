@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "D02": {
+    "search task": {
       "commandName": "Project"
     },
     "Container (Dockerfile)": {

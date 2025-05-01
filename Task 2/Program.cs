@@ -1,4 +1,4 @@
-﻿namespace D02
+﻿namespace Task_2
 {
     internal class Program
     {

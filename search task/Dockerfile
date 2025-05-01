@@ -10,19 +10,19 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["D02/D02.csproj", "D02/"]
-RUN dotnet restore "./D02/D02.csproj"
+COPY ["search task/search task.csproj", "search task/"]
+RUN dotnet restore "./search task/search task.csproj"
 COPY . .
-WORKDIR "/src/D02"
-RUN dotnet build "./D02.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/search task"
+RUN dotnet build "./search task.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./D02.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./search task.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "D02.dll"]
+ENTRYPOINT ["dotnet", "search task.dll"]
