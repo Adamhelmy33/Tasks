@@ -16,6 +16,7 @@
                 Console.WriteLine("S - Display the smallest number");
                 Console.WriteLine("L - Display the largest number");
                 Console.WriteLine("C - Clear the list");
+                Console.WriteLine("F - Find a number");
                 Console.WriteLine("Q - Quit");
 
                 Console.Write("\nEnter your choice: ");
@@ -114,6 +115,27 @@
                             numbers.Clear();
                             Console.WriteLine("List Cleared");
                             break;
+
+                        case "F":
+                        case "f":
+                            if (numbers.Count == 0)
+                                Console.WriteLine("Unable to find a number - list is empty");
+                            else
+                            {
+                                Console.WriteLine("Enter your number: ");
+                                int findnumber = Convert.ToInt32(Console.ReadLine());
+                                for (int i = 0; i<numbers.Count; i++)
+                                {
+                                    if (findnumber == numbers[i])
+                                    {
+                                        Console.WriteLine($"{findnumber} Founded");
+                                        break;
+                                    }
+                                    else
+                                        Console.WriteLine("This number not in your list");
+                                }
+                            }
+                                break;
 
                         default:
                             Console.WriteLine("Unknown selection, please try again");
