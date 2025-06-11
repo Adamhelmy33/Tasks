@@ -1,0 +1,66 @@
+namespace Search_task
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //=========Duplicate-number========
+
+            //try
+            //{
+            //    Console.Write("Enter numbers separated by spaces: ");
+            //    string line = Console.ReadLine();
+            //    string[] parts = line.Split(' ');
+            //    int[] nums = new int[parts.Length];
+            //    for (int i = 0; i < parts.Length; i++)
+            //        nums[i] = int.Parse(parts[i]);
+
+            //    for (int i = 0; i < nums.Length; i++)
+            //    {
+            //        for (int j = i + 1; j < nums.Length; j++)
+            //        {
+            //            if (nums[i] == nums[j])
+            //                throw new Exception("Duplicate number: " + nums[i]);
+            //        }
+
+            //    } 
+
+            //    Console.WriteLine("No duplicates");
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
+
+
+
+            //=========string does not contain vowels========
+
+            try
+            {
+                Console.Write("Enter text: ");
+                string text = Console.ReadLine();
+                CheckVowel(text);
+                Console.WriteLine("Has at least one vowel");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+        static void CheckVowel(string s)
+        {
+            bool found = false;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char c = char.ToLower(s[i]);
+                if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+                    found = true;
+            }
+            if (!found)
+                throw new Exception("String contains no vowels");
+        }
+
+    }
+}
