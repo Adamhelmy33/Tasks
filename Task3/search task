@@ -1,0 +1,2 @@
+search task:
+structs are better than classes when you're working with small, simple, and immutable data that doesn’t need inheritance or reference-type behavior.
